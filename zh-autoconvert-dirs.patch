@@ -1,0 +1,37 @@
+--- autoconvert-0.3.16/Makefile.orig	2001-04-28 03:45:46.000000000 +0200
++++ autoconvert-0.3.16/Makefile	2017-06-23 17:00:19.390205787 +0200
+@@ -3,6 +3,12 @@
+ CFLAG=-O2 -g -Wall -Iinclude
+ LIBS= -Llib -lhz
+ 
++PREFIX=/usr
++BINDIR=$(PREFIX)/bin
++LIBDIR=$(PREFIX)/lib
++INCLUDEDIR=$(PREFIX)/include
++XCHATDIR=$(LIBDIR)/xchat/plugins
++
+ .PHONY: all hzlib clean install-home install
+ 
+ all: autob5 autogb hzlib  xchat-plugins
+@@ -30,12 +36,12 @@
+ 	ln -s $(HOME)/bin/autogb $(HOME)/bin/autob5
+ 	chmod 755 $(HOME)/bin/autogb 
+ install:
+-	install -m 755 autogb $(DESTDIR)/usr/bin
+-	install -m 755 lib/libhz.so.0.0 $(DESTDIR)/usr/lib
+-	cd $(DESTDIR)/usr/lib;ln -s  libhz.so.0.0 libhz.so.0
+-	cd $(DESTDIR)/usr/lib;ln -s  libhz.so.0 libhz.so
+-	install -m 755 lib/libhz.a $(DESTDIR)/usr/lib
+-	install -m 755 contrib/xchat-plugins/xchat-autogb.so $(DESTDIR)/usr/share/zh-autoconvert
+-	install -m 755 contrib/xchat-plugins/xchat-autob5.so $(DESTDIR)/usr/share/zh-autoconvert
+-	install -m 644 include/*.h  $(DESTDIR)/usr/include
+-	ln -s autogb $(DESTDIR)/usr/bin/autob5
++	install -m 755 autogb $(DESTDIR)$(BINDIR)
++	install -m 755 lib/libhz.so.0.0 $(DESTDIR)$(LIBDIR)
++	cd $(DESTDIR)$(LIBDIR);ln -s  libhz.so.0.0 libhz.so.0
++	cd $(DESTDIR)$(LIBDIR);ln -s  libhz.so.0 libhz.so
++	install -m 755 lib/libhz.a $(DESTDIR)$(LIBDIR)
++	install -m 755 contrib/xchat-plugins/xchat-autogb.so $(DESTDIR)$(XCHATDIR)
++	install -m 755 contrib/xchat-plugins/xchat-autob5.so $(DESTDIR)$(XCHATDIR)
++	install -m 644 include/*.h  $(DESTDIR)$(INCLUDEDIR)
++	ln -s autogb $(DESTDIR)$(BINDIR)/autob5
