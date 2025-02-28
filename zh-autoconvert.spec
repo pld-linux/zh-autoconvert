@@ -2,7 +2,7 @@ Summary:	Chinese HZ/GB/BIG5/UTF-16/UTF-7/UTF-8 encodings auto-converter
 Summary(pl.UTF-8):	Automatyczny konwerter kodowań chińskich znaków HZ/GB/BIG5/UTF-16/UTF-7/UTF-8
 Name:		zh-autoconvert
 Version:	0.3.16
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://ftp.debian.org/debian/pool/main/z/zh-autoconvert/%{name}_%{version}.orig.tar.gz
