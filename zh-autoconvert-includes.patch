@@ -1,0 +1,71 @@
+--- autoconvert-0.3.16/hzconvert/b2u.c.orig	2004-03-21 18:28:57.000000000 +0100
++++ autoconvert-0.3.16/hzconvert/b2u.c	2025-02-28 05:57:38.280547869 +0100
+@@ -23,6 +23,7 @@ Boston, MA  02111-1307, USA.
+  *1999.10
+  */       
+ //$Header: /home/prog/autoconvert/hzconvert/b2u.c,v 1.6 2001/04/28 01:45:46 ygh Exp $
++#include <string.h>
+ #include "hz.h"
+ 
+ #define	BtoU_bad1 0xa1
+--- autoconvert-0.3.16/hzconvert/g2u.c.orig	2001-04-28 03:45:46.000000000 +0200
++++ autoconvert-0.3.16/hzconvert/g2u.c	2025-02-28 05:58:35.520794332 +0100
+@@ -24,6 +24,7 @@ Boston, MA  02111-1307, USA.
+  */       
+ //$Header: /home/prog/autoconvert/hzconvert/g2u.c,v 1.4 2001/04/28 01:45:46 ygh Exp $
+ 
++#include <string.h>
+ #include "hz.h"
+ 
+ #define	GtoU_bad1 0xa1
+--- autoconvert-0.3.16/hzconvert/unicode.c.orig	2001-04-28 03:45:46.000000000 +0200
++++ autoconvert-0.3.16/hzconvert/unicode.c	2025-02-28 05:59:07.800933322 +0100
+@@ -24,6 +24,7 @@ Boston, MA  02111-1307, USA.
+  */       
+ //$Header: /home/prog/autoconvert/hzconvert/unicode.c,v 1.5 2001/04/28 01:45:46 ygh Exp $
+ 
++#include <string.h>
+ #include "hz.h"
+ 
+ /*** UTF8 => UNICODE ***/
+--- autoconvert-0.3.16/hzconvert/judge.c.orig	2000-08-31 05:11:08.000000000 +0200
++++ autoconvert-0.3.16/hzconvert/judge.c	2025-02-28 05:59:50.907785597 +0100
+@@ -26,9 +26,12 @@ Boston, MA  02111-1307, USA.
+ 
+ //$Header: /home/prog/autoconvert/hzconvert/judge.c,v 1.2 2000/08/31 03:11:08 ygh Exp $
+ #include <stdio.h>
++#include <string.h>
+ 
+ #include "hz.h"
+ 
++int j_code3(char * buff, int count);
++
+ int j_code(char * buff,int count)
+ {
+ 	unsigned char * phz;
+--- autoconvert-0.3.16/autogb.c.orig	2003-12-12 14:07:01.000000000 +0100
++++ autoconvert-0.3.16/autogb.c	2025-02-28 06:02:39.801846146 +0100
+@@ -26,9 +26,13 @@ Boston, MA  02111-1307, USA.
+ //$Header: /home/prog/autoconvert/autogb.c,v 1.7 2001/04/23 14:18:06 ygh Exp $
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
+ #include <getopt.h>
+ #include "hz.h"
+ 
++int conv_str(char* str_code);
+ 
+ /* Print help and exit */
+ void print_help(char* filename){
+--- autoconvert-0.3.16/contrib/xchat-plugins/plugin.h.orig	2000-11-27 17:16:33.000000000 +0100
++++ autoconvert-0.3.16/contrib/xchat-plugins/plugin.h	2025-02-28 06:27:02.968145169 +0100
+@@ -107,4 +107,7 @@ extern int fire_signal (int, void *, voi
+ 
+ #endif
+ 
++void PrintText (session *sess, char *text);
++int hook_signal (struct xp_signal *);
++
+ #endif /* PLUGIN_H */

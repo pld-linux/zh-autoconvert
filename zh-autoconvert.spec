@@ -9,6 +9,7 @@ Source0:	http://ftp.debian.org/debian/pool/main/z/zh-autoconvert/%{name}_%{versi
 # Source0-md5:	1f4aa2332afc076910b5d510b8c81966
 Patch0:		%{name}-dirs.patch
 Patch1:		%{name}-xchat-gtk2.patch
+Patch2:		%{name}-includes.patch
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -72,6 +73,7 @@ Wtyczki zh-autoconvert dla klienta IRC-a XChat.
 %setup -q -n autoconvert-%{version}
 %patch -P0 -p1
 %patch -P1 -p1
+%patch -P2 -p1
 
 %build
 %{__make} -j1 \
