@@ -1,8 +1,12 @@
+#
+# Conditional build:
+%bcond_with	xchat		# install xchat plugin
+#
 Summary:	Chinese HZ/GB/BIG5/UTF-16/UTF-7/UTF-8 encodings auto-converter
 Summary(pl.UTF-8):	Automatyczny konwerter kodowań chińskich znaków HZ/GB/BIG5/UTF-16/UTF-7/UTF-8
 Name:		zh-autoconvert
 Version:	0.3.16
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://ftp.debian.org/debian/pool/main/z/zh-autoconvert/%{name}_%{version}.orig.tar.gz
@@ -90,6 +94,8 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/xchat/plugins,%{_includedir}}
 	DESTDIR=$RPM_BUILD_ROOT \
 	LIBDIR=%{_libdir}
 
+%{!?with_xchat:%{__rm} -r $RPM_BUILD_ROOT%{_libdir}/xchat}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -114,7 +120,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libhz.a
 
+%if %{with xchat}
 %files -n xchat-zh-autoconvert
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/xchat/plugins/xchat-autob5.so
 %attr(755,root,root) %{_libdir}/xchat/plugins/xchat-autogb.so
+%endif
